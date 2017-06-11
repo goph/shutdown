@@ -1,3 +1,4 @@
+// Package shutdown provides tools for handling application shutdowns.
 package shutdown
 
 import "github.com/goph/stdlib/errors"
