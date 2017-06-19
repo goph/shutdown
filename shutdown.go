@@ -1,8 +1,6 @@
 // Package shutdown provides tools for handling application shutdowns.
 package shutdown
 
-import "github.com/goph/stdlib/errors"
-
 // Manager manages an application shutdown by calling the registered handlers.
 type Manager struct {
 	handlers     []Handler
@@ -54,7 +52,7 @@ func (m *Manager) RegisterAsFirst(handlers ...Handler) {
 // It should be called as the last method in `main` (eg. using defer).
 func (m *Manager) Shutdown() {
 	// Try recovering from panic first
-	err := errors.Recover(recover())
+	err := r(recover())
 	if err != nil {
 		m.ErrorHandler.Handle(err)
 	}
